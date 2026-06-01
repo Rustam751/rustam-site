@@ -1,17 +1,23 @@
-// ------------ app/projects/page.tsx ------------
+import type { Metadata } from "next";
 import SectionTitle from "../components/SectionTitle";
+import ProjectsExplorer from "../components/ProjectsExplorer";
 import { projects } from "@/lib/data";
-import ProjectCard from "../components/ProjectCard";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "Selected work by Rustam Mukhtarov — AI products, ML pipelines, and prototypes across conversational UX, medical imaging, and autonomous systems.",
+};
 
 export default function ProjectsPage() {
-    return (
-        <div className="py-10">
-            <SectionTitle title="Projects" subtitle="Selected work. More on GitHub." />
-            <div className="grid gap-6 md:grid-cols-2">
-                {projects.map((p) => (
-                    <ProjectCard key={p.name} p={p as any} />
-                ))}
-            </div>
-        </div>
-    );
+  return (
+    <div className="py-12">
+      <SectionTitle
+        eyebrow="Portfolio"
+        title="Projects"
+        subtitle="Filter by stack. More on GitHub."
+      />
+      <ProjectsExplorer projects={projects} />
+    </div>
+  );
 }
