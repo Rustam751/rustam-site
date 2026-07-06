@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rustam Mukhtarov — Personal Portfolio
 
-## Getting Started
+This is my personal portfolio website showcasing my work in applied machine learning, computer vision, AI product engineering, and human-AI interaction.
 
-First, run the development server:
+Live Site: https://rustam-site.vercel.app/  
+GitHub Profile: https://github.com/Rustam751  
+LinkedIn: https://www.linkedin.com/in/russmukhtar/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## About
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+I am Rustam “Russ” Mukhtarov, an M.S. candidate in Artificial Intelligence & Data Science at San Francisco State University.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+My work focuses on:
 
-## Learn More
+- Applied machine learning
+- Computer vision
+- Medical imaging
+- UAV / robotics systems
+- Human-AI product prototypes
+- Full-stack AI applications
 
-To learn more about Next.js, take a look at the following resources:
+This portfolio is designed to present my projects, technical background, experience, and contact information in one place.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Featured Work
 
-## Deploy on Vercel
+### Alzheimer’s PET Classification
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Deep learning project for classifying Alzheimer’s disease stages from PET images using transfer learning models such as VGG16, InceptionV3, and ResNet50.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Repository: https://github.com/Abdoul1996/Alzheimer_Classification
+
+---
+
+### DriveShare
+
+A peer-to-peer driveway rental marketplace prototype where homeowners can list unused driveway space and drivers can reserve affordable parking.
+
+Live Demo: https://driveshare-app.vercel.app/  
+Repository: https://github.com/Rustam751/driveshare-app
+
+---
+
+### DroneHunter / UAV Detection
+
+Computer vision and UAV robotics project involving object detection, tracking, and autonomous mission support.
+
+Repository: https://github.com/keremtatlici/dronehunter_teknofest2023
+
+---
+
+### Tennis Court Line Detection
+
+Image-processing project for detecting tennis court lines using computer vision algorithms.
+
+Repository: https://github.com/mucahitkalebasi/tennis-line-detection-img-processing
+
+---
+
+## Tech Stack
+
+- **Framework:** Next.js
+- **Language:** TypeScript
+- **Frontend:** React, Tailwind CSS
+- **Animation:** Framer Motion
+- **Deployment:** Vercel
+
+---
+
+## Project Structure
+
+```text
+rustam-site/
+├── app/
+│   ├── components/
+│   ├── projects/
+│   ├── experience/
+│   ├── about/
+│   └── page.tsx
+├── lib/
+│   └── data.ts
+├── public/
+│   ├── headshot.jpg
+│   └── resume/
+├── package.json
+└── README.md
