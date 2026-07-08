@@ -2,7 +2,7 @@
 
 This is my personal portfolio website showcasing my work in applied machine learning, computer vision, AI product engineering, and human-AI interaction.
 
-Live Site: https://rustam-site.vercel.app/  
+Live Site: https://rustam-site-lemon.vercel.app/  
 GitHub Profile: https://github.com/Rustam751  
 LinkedIn: https://www.linkedin.com/in/russmukhtar/
 
