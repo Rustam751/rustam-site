@@ -30,12 +30,9 @@ This portfolio is designed to present my projects, technical background, experie
 ### RAG Document Assistant
 Production-style retrieval-augmented generation system for medical, legal, and academic PDFs. Every answer is grounded in cited sources (file + page + verbatim quote), and the model abstains instead of guessing when documents don't contain the answer.
 
-Stack: Python, FastAPI, ChromaDB, Anthropic Claude API, Streamlit, Docker, GitHub Actions
-Focus: RAG, grounded generation, hallucination guards, LLM evaluation, API engineering
-Results: 0.87 retrieval hit rate, 100% abstention on unanswerable questions, and zero fabricated facts on a 20-question benchmark — with documented failure analysis of the two retrieval misses
-Solo project: designed, built, tested (29 offline tests + CI), evaluated, and deployed end-to-end
-
 Repository: https://github.com/Rustam751/rag-document-assistant
+
+---
 
 ### Alzheimer’s PET Classification
 
