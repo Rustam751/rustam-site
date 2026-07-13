@@ -4,21 +4,21 @@ import SectionTitle from "../components/SectionTitle";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About Rustam (Russ) Mukhtarov — AI Product Engineer and M.S. candidate in AI/Data Science. How I work, what I'm focused on, and my graduate thesis.",
+    "About Rustam (Russ) Mukhtarov — ML/AI Engineer and M.S. candidate in AI/Data Science. How I work, what I'm focused on, and my graduate thesis.",
 };
 
 const quickFacts = [
   ["Location", "San Francisco, CA"],
-  ["Role", "AI Product Engineer · TA @ SFSU"],
+  ["Role", "ML/AI Engineer · Graduate Researcher @ SFSU"],
   ["Languages", "English, Russian, Turkish, Azerbaijani · Spanish (beginner)"],
-  ["Stack", "Python, JS/TS, PyTorch, TensorFlow, Next.js, Tailwind"],
-  ["Interests", "Human–AI, prototyping, UX, medical imaging"],
+  ["Stack", "Python, PyTorch, FastAPI, Docker, TypeScript, Next.js"],
+  ["Interests", "RAG & LLM evaluation, computer vision, medical imaging"],
 ];
 
 const doCards = [
-  ["Rapid prototyping", "Clickable demos in days, not weeks. Tight feedback loops."],
-  ["Human–AI interaction", "Conversational UX, affordances, and guardrails that feel natural."],
-  ["ML integration", "PyTorch/TensorFlow models, data prep, evaluation, and deployment glue."],
+  ["RAG & LLM systems", "Grounded, citation-backed pipelines with evaluation harnesses and hallucination guards."],
+  ["ML deployment", "PyTorch models served behind FastAPI — Dockerized, tested, and wired into CI."],
+  ["Computer vision & medical imaging", "Transfer learning, 3D segmentation, and Grad-CAM explainability."],
 ];
 
 const principles = [
@@ -41,15 +41,15 @@ export default function AboutPage() {
         <div className="space-y-4 text-[var(--text-muted)] leading-relaxed">
           <p>
             I&apos;m <strong className="text-[var(--text)]">Rustam (Russ) Mukhtarov</strong>, an{" "}
-            <strong className="text-[var(--text)]">AI Product Engineer</strong> and M.S. candidate in
-            AI/Data Science at San Francisco State University. I build human–AI products and fast
-            prototypes — shipping early, testing with real people, and iterating until the experience
-            feels effortless.
+            <strong className="text-[var(--text)]">ML/AI Engineer</strong> and M.S. candidate in
+            AI/Data Science at San Francisco State University, with 3+ years building and deploying
+            production ML pipelines. I turn models into usable software: APIs, evaluation pipelines,
+            Dockerized services, and clean interfaces.
           </p>
           <p>
-            My recent work spans conversational UX, model integration, and practical ML systems for
-            speed and clarity. I enjoy blending design thinking with engineering craft to make AI
-            collaboration feel natural and empowering.
+            My recent work spans citation-grounded RAG systems, deployed ML inference APIs, and 3D
+            deep learning for medical imaging. I care about honest evaluation, reproducibility, and
+            shipping systems people can actually run — tests, CI, and Docker included.
           </p>
         </div>
 
@@ -75,9 +75,9 @@ export default function AboutPage() {
       <section className="mt-16">
         <h3 className="text-xl font-semibold tracking-tight">What I do</h3>
         <p className="mt-3 text-[var(--text-muted)] leading-relaxed max-w-2xl">
-          I turn fuzzy product ideas into working prototypes, validate with users, and evolve them into
-          crisp interfaces backed by reliable ML. I&apos;m comfortable moving across frontend, backend,
-          and model pipelines — prioritizing speed, usability, and measurable outcomes.
+          I take ML from notebook to deployed service: data prep, training, evaluation, serving, and
+          the interface on top. I&apos;m comfortable moving across model pipelines, backends, and
+          frontends — prioritizing correctness, reproducibility, and measurable outcomes.
         </p>
         <div className="mt-5 grid gap-4 md:grid-cols-3">
           {doCards.map(([t, d]) => (
@@ -94,9 +94,9 @@ export default function AboutPage() {
         <h3 className="text-xl font-semibold tracking-tight">Current focus</h3>
         <ul className="mt-4 space-y-2.5 text-[var(--text-muted)]">
           {[
-            "Conversational UI patterns that guide users without getting in the way.",
-            "Feedback mechanisms that improve model outputs over time.",
-            "Interfaces that make advanced capabilities feel simple and trustworthy.",
+            "Hybrid retrieval (BM25 + dense) and evaluation harnesses for RAG systems.",
+            "3D U-Net segmentation of micro-CT data for my graduate thesis.",
+            "Making deployed models trustworthy: grounding, abstention, and explainability.",
           ].map((t) => (
             <li key={t} className="flex gap-2.5">
               <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-[var(--accent)]" />

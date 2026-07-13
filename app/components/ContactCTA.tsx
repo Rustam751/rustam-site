@@ -13,8 +13,8 @@ export default function ContactCTA() {
           Let&apos;s build something people love.
         </h2>
         <p className="mx-auto mt-3 max-w-lg text-sm md:text-base text-[var(--text-muted)]">
-          I&apos;m open to AI/ML and product engineering roles, collaborations, and
-          interesting prototypes. The fastest way to reach me is email.
+          I&apos;m open to ML/AI engineering and data science roles, collaborations,
+          and interesting projects. The fastest way to reach me is email.
         </p>
         <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
           <a href="mailto:rmukhtarov@sfsu.edu" className="btn btn-primary">

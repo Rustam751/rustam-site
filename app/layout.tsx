@@ -15,26 +15,29 @@ const siteUrl = "https://rustam-site-lemon.vercel.app";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Rustam Mukhtarov — AI Product Engineer",
+    default: "Rustam Mukhtarov — ML/AI Engineer",
     template: "%s · Rustam Mukhtarov",
   },
   description:
-    "Rustam (Russ) Mukhtarov — AI Product Engineer and M.S. candidate in AI/Data Science. I build human–AI products, fast prototypes, and practical ML systems.",
+    "Rustam (Russ) Mukhtarov — ML/AI Engineer and M.S. candidate in AI/Data Science. I build deployable AI systems: RAG pipelines, ML APIs, computer vision, and medical imaging.",
   keywords: [
     "Rustam Mukhtarov",
-    "AI Product Engineer",
+    "ML Engineer",
+    "AI Engineer",
     "Machine Learning",
-    "Human-AI Interaction",
-    "Next.js",
+    "RAG",
+    "FastAPI",
     "PyTorch",
+    "Computer Vision",
+    "Medical Imaging",
     "San Francisco",
   ],
   authors: [{ name: "Rustam Mukhtarov" }],
   icons: { icon: "/favicon.ico" },
   openGraph: {
-    title: "Rustam Mukhtarov — AI Product Engineer",
+    title: "Rustam Mukhtarov — ML/AI Engineer",
     description:
-      "I build human–AI products, fast prototypes, and practical ML systems. Projects, experience, and how to reach me.",
+      "I build deployable AI systems: RAG pipelines, ML APIs, computer vision, and medical imaging. Projects, experience, and how to reach me.",
     url: siteUrl,
     siteName: "Rustam Mukhtarov",
     type: "website",
@@ -42,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rustam Mukhtarov — AI Product Engineer",
+    title: "Rustam Mukhtarov — ML/AI Engineer",
     description:
-      "I build human–AI products, fast prototypes, and practical ML systems.",
+      "I build deployable AI systems: RAG pipelines, ML APIs, computer vision, and medical imaging.",
   },
 };
 

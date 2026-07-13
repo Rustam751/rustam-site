@@ -40,7 +40,7 @@ export default function Page() {
         <SectionTitle
           eyebrow="Toolkit"
           title="What I work with"
-          subtitle="From product and UX through to models and infrastructure."
+          subtitle="From models and evaluation through APIs, Docker, and CI."
         />
         <Skills />
       </section>
