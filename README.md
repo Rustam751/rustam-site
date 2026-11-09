@@ -2,7 +2,7 @@
 
 This is my personal portfolio website showcasing my work in applied machine learning, computer vision, AI product engineering, and human-AI interaction.
 
-Live Site: https://rustam-site-lemon.vercel.app/  
+Live Site: https://mukhtarov.dev/  
 GitHub Profile: https://github.com/Rustam751  
 LinkedIn: https://www.linkedin.com/in/russmukhtar/
 
@@ -46,7 +46,7 @@ Repository: https://github.com/Abdoul1996/Alzheimer_Classification
 
 A peer-to-peer driveway rental marketplace prototype where homeowners can list unused driveway space and drivers can reserve affordable parking.
 
-Live Demo: https://driveshare-app.vercel.app/  
+Live Demo: https://driveshare.mukhtarov.dev/  
 Repository: https://github.com/Rustam751/driveshare-app
 
 ---

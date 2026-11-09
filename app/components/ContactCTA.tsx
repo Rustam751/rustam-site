@@ -17,8 +17,8 @@ export default function ContactCTA() {
           and interesting projects. The fastest way to reach me is email.
         </p>
         <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-          <a href="mailto:rmukhtarov@sfsu.edu" className="btn btn-primary">
-            rmukhtarov@sfsu.edu
+          <a href="mailto:rustam@mukhtarov.dev" className="btn btn-primary">
+            rustam@mukhtarov.dev
           </a>
           <a
             href="https://www.linkedin.com/in/russmukhtar"

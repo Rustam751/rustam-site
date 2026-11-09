@@ -10,7 +10,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = "https://rustam-site-lemon.vercel.app";
+const siteUrl = "https://mukhtarov.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

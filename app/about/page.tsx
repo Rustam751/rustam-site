@@ -146,7 +146,7 @@ export default function AboutPage() {
 
       {/* CTA */}
       <div className="mt-14 flex flex-wrap gap-3">
-        <a href="mailto:rmukhtarov@sfsu.edu" className="btn btn-primary">Get in touch</a>
+        <a href="mailto:rustam@mukhtarov.dev" className="btn btn-primary">Get in touch</a>
         <a href="/projects" className="btn">See projects</a>
       </div>
     </div>

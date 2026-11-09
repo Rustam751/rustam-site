@@ -4,7 +4,7 @@ import { profile } from "@/lib/data";
 const socials = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/russmukhtar" },
   { label: "GitHub", href: "https://github.com/Rustam751" },
-  { label: "Email", href: "mailto:rmukhtarov@sfsu.edu" },
+  { label: "Email", href: "mailto:rustam@mukhtarov.dev" },
 ];
 
 export default function Footer() {
@@ -17,10 +17,10 @@ export default function Footer() {
               Let&apos;s build something.
             </p>
             <a
-              href="mailto:rmukhtarov@sfsu.edu"
+              href="mailto:rustam@mukhtarov.dev"
               className="mt-1 inline-block text-sm text-[var(--accent)] hover:underline underline-offset-4"
             >
-              rmukhtarov@sfsu.edu
+              rustam@mukhtarov.dev
             </a>
           </div>
           <div className="flex flex-wrap gap-4 text-sm">

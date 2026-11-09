@@ -48,7 +48,7 @@ export default function Hero() {
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </a>
-            <a href="mailto:rmukhtarov@sfsu.edu" className="btn">
+            <a href="mailto:rustam@mukhtarov.dev" className="btn">
               Get in touch
             </a>
             <a

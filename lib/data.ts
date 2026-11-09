@@ -9,7 +9,7 @@ export const profile = {
     "I build practical AI/ML systems across RAG, computer vision, and medical imaging — and turn models into usable software: APIs, evaluation pipelines, Dockerized services, and clean interfaces.",
   status: "Open to ML/AI Engineer & Data Scientist roles — SF Bay Area / remote",
   location: "San Francisco, CA",
-  email: "rmukhtarov@sfsu.edu",
+  email: "rustam@mukhtarov.dev",
   links: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/russmukhtar" },
     { label: "GitHub", href: "https://github.com/Rustam751" },
@@ -197,7 +197,7 @@ export const projects: Project[] = [
     ],
     tags: ["Next.js", "Tailwind", "PostgreSQL", "Figma"],
     links: [
-      { label: "Live demo", href: "https://driveshare-app.vercel.app/" },
+      { label: "Live demo", href: "https://driveshare.mukhtarov.dev/" },
       { label: "GitHub", href: "https://github.com/Rustam751/driveshare-app" },
     ],
     featured: true,
