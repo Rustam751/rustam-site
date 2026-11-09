@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Hero from "./components/Hero";
 import SectionTitle from "./components/SectionTitle";
@@ -5,6 +6,10 @@ import ProjectCard from "./components/ProjectCard";
 import Skills from "./components/Skills";
 import ContactCTA from "./components/ContactCTA";
 import { projects } from "@/lib/data";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Page() {
   const featured = projects.filter((p) => p.featured).slice(0, 3);

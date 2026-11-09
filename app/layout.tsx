@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { profile } from "@/lib/data";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -50,6 +51,31 @@ export const metadata: Metadata = {
   },
 };
 
+// Structured data: tells Google who this site is about (name, role, profiles).
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Rustam Mukhtarov",
+  alternateName: ["Russ Mukhtarov", "Russ Mukhtar"],
+  url: siteUrl,
+  image: `${siteUrl}${profile.headshot}`,
+  jobTitle: "ML/AI Engineer",
+  description: profile.summary,
+  email: `mailto:${profile.email}`,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "San Francisco",
+    addressRegion: "CA",
+    addressCountry: "US",
+  },
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: "San Francisco State University" },
+    { "@type": "CollegeOrUniversity", name: "Yildiz Technical University" },
+  ],
+  knowsAbout: ["Machine Learning", "Retrieval-Augmented Generation", "Computer Vision", "Medical Imaging", "MLOps"],
+  sameAs: ["https://www.linkedin.com/in/russmukhtar", "https://github.com/Rustam751"],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} dark`}>
@@ -59,6 +85,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
       </body>
     </html>
   );

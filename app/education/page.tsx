@@ -4,6 +4,7 @@ import { education } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Education",
+  alternates: { canonical: "/education" },
   description:
     "Education of Rustam Mukhtarov — M.S. in AI & Data Science at SFSU and B.S. in Mechatronics Engineering.",
 };

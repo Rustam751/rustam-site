@@ -3,6 +3,7 @@ import SectionTitle from "../components/SectionTitle";
 
 export const metadata: Metadata = {
   title: "About",
+  alternates: { canonical: "/about" },
   description:
     "About Rustam (Russ) Mukhtarov — ML/AI Engineer and M.S. candidate in AI/Data Science. How I work, what I'm focused on, and my graduate thesis.",
 };

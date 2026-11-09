@@ -6,6 +6,7 @@ import { projects } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Projects",
+  alternates: { canonical: "/projects" },
   description:
     "Selected work by Rustam Mukhtarov — RAG systems, deployed ML APIs, computer vision, and medical imaging. FastAPI, PyTorch, Docker, CI.",
 };

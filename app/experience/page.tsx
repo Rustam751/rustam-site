@@ -4,6 +4,7 @@ import { experience } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Experience",
+  alternates: { canonical: "/experience" },
   description:
     "Professional experience of Rustam Mukhtarov — AI Team Lead and Teaching Assistant, building ML pipelines and mentoring engineers.",
 };
