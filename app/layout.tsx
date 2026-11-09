@@ -33,7 +33,6 @@ export const metadata: Metadata = {
     "San Francisco",
   ],
   authors: [{ name: "Rustam Mukhtarov" }],
-  icons: { icon: "/favicon.ico" },
   openGraph: {
     title: "Rustam Mukhtarov — ML/AI Engineer",
     description:
