@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { profile, stats } from "@/lib/data";
 
 const fade = (delay = 0) => ({
@@ -42,12 +43,12 @@ export default function Hero() {
             {...fade(0.24)}
             className="mt-7 flex flex-wrap items-center justify-center gap-3 md:justify-start"
           >
-            <a href="/projects" className="btn btn-primary">
+            <Link href="/projects" className="btn btn-primary">
               View my work
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
-            </a>
+            </Link>
             <a href="mailto:rustam@mukhtarov.dev" className="btn">
               Get in touch
             </a>

@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/data";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: "https://mukhtarov.dev/sitemap.xml",
-    host: "https://mukhtarov.dev",
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }

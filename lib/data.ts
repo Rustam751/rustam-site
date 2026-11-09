@@ -1,5 +1,9 @@
 // lib/data.ts
 
+// The public address of the site. Used for canonical links, the sitemap,
+// share previews and structured data.
+export const siteUrl = "https://mukhtarov.dev";
+
 export const profile = {
   name: "Rustam (Russ) Mukhtarov",
   firstName: "Russ",
@@ -140,10 +144,17 @@ export type ProjectLink = {
 };
 
 export type Project = {
+  // Set a slug to give the project its own page at /projects/<slug>.
+  // The page text lives in lib/case-studies.ts under the same slug. The two
+  // must match, or the site stops with an error that names the missing half.
+  slug?: string;
   name: string;
   period: string;
   blurb: string;
   impact?: string;
+  // Not shown anywhere on the site at the moment (cards show the name,
+  // period, impact, blurb, tags and links). The text is still sent in the
+  // page source, so keep it accurate.
   bullets: string[];
   tags: string[];
   links: ProjectLink[];
@@ -152,28 +163,31 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "rag-document-assistant",
     name: "RAG Document Assistant",
     period: "Jul 2026",
     blurb:
       "Production-style RAG system for domain PDFs: FastAPI, ChromaDB, and Claude with schema-constrained generation. Answers are grounded in per-claim citations and the system abstains when the documents don't contain the answer.",
-    impact: "0 fabricated facts · 100% abstention on unanswerable questions",
+    impact: "Abstained on 5/5 unanswerable questions; 13/15 retrieval hits (20-question eval)",
     bullets: [
-      "Three-layer hallucination guard: grounding prompt contract, JSON-schema output enforcement, server-side citation validation.",
+      "Three-layer hallucination guard: grounding prompt contract, JSON-schema output enforcement, server-side citation resolution.",
       "Evaluation harness over a 70-page report: 0.87 retrieval hit rate, 100% abstention accuracy, ~4s mean latency.",
       "29 offline tests with injected fake LLM/embedding clients; CI on every push; one-command Docker Compose deploy.",
     ],
     tags: ["RAG", "FastAPI", "ChromaDB", "Claude API", "Docker", "CI", "Evaluation"],
     links: [
       { label: "GitHub", href: "https://github.com/Rustam751/rag-document-assistant" },
+      { label: "Docs", href: "https://rag.mukhtarov.dev" },
     ],
     featured: true,
   },
   {
+    slug: "medical-image-classifier",
     name: "Medical Image Classifier API",
     period: "Jun 2026",
     blurb:
       "Production-style PyTorch image classification service: shared train/serve preprocessing, FastAPI inference with Grad-CAM explanations, and honest evaluation on a reproducible synthetic benchmark (non-clinical).",
-    impact: "94% accuracy / 0.94 macro-F1 on reproducible benchmark",
+    impact: "94% accuracy / 0.94 macro-F1 on 135 synthetic test images",
     bullets: [
       "Self-describing model checkpoint + shared preprocessing pipeline to eliminate train/serve skew.",
       "REST API returns predicted class, full probability distribution, and Grad-CAM heatmaps with input validation.",
@@ -182,6 +196,7 @@ export const projects: Project[] = [
     tags: ["PyTorch", "FastAPI", "Medical Imaging", "Grad-CAM", "Docker", "CI"],
     links: [
       { label: "GitHub", href: "https://github.com/Rustam751/medical-image-classifier" },
+      { label: "Docs", href: "https://classifier.mukhtarov.dev" },
     ],
     featured: true,
   },
@@ -201,6 +216,23 @@ export const projects: Project[] = [
       { label: "GitHub", href: "https://github.com/Rustam751/driveshare-app" },
     ],
     featured: true,
+  },
+  {
+    name: "Job Search Agent",
+    period: "Sep 2026 – Present",
+    blurb:
+      "A daily pipeline for my own job search, built with Claude Code. A Python script queries about 300 public job boards. LLM agents score the postings against my résumé and draft tailored applications. Nothing is submitted until I approve that exact draft.",
+    impact: "Every claim in a tailored résumé must trace back to my master résumé",
+    bullets: [
+      "A deterministic guard rejects numbers, skills and dates in the tailored résumé that are not in the master résumé; an adversarial LLM fact-check looks for what rules cannot catch.",
+      "My approval is stored with a hash of the checked application. If the drafted content changes afterwards, the submit gate refuses until I approve again.",
+      "The submit agent is told to stop at visible CAPTCHAs, account creation, passwords and verification codes. On portals that need an account, I apply myself.",
+    ],
+    tags: ["LLM", "Agents", "Claude Code", "Python", "Guardrails"],
+    links: [
+      { label: "GitHub", href: "https://github.com/Rustam751/job-search-agent" },
+      { label: "Docs", href: "https://jobs.mukhtarov.dev" },
+    ],
   },
   {
     name: "Alzheimer's PET Classification",

@@ -3,15 +3,14 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { profile } from "@/lib/data";
+import JsonLd from "./components/JsonLd";
+import { profile, siteUrl } from "@/lib/data";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
-
-const siteUrl = "https://mukhtarov.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -85,10 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
+        <JsonLd data={personJsonLd} />
       </body>
     </html>
   );

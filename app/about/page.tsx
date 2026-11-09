@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SectionTitle from "../components/SectionTitle";
 
 export const metadata: Metadata = {
@@ -148,7 +149,7 @@ export default function AboutPage() {
       {/* CTA */}
       <div className="mt-14 flex flex-wrap gap-3">
         <a href="mailto:rustam@mukhtarov.dev" className="btn btn-primary">Get in touch</a>
-        <a href="/projects" className="btn">See projects</a>
+        <Link href="/projects" className="btn">See projects</Link>
       </div>
     </div>
   );
