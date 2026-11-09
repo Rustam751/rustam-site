@@ -1,0 +1,11 @@
+{
+  "redirects": [
+    { "source": "/cv", "destination": "/resume/Russ_Mukhtar_CV.pdf", "permanent": false },
+    { "source": "/resume", "destination": "/resume/Russ_Mukhtar_CV.pdf", "permanent": false },
+    { "source": "/github", "destination": "https://github.com/Rustam751", "permanent": false },
+    { "source": "/linkedin", "destination": "https://www.linkedin.com/in/russmukhtar", "permanent": false },
+    { "source": "/ha", "destination": "http://russ751-pi.seahorse-edmontosaurus.ts.net:8123", "permanent": false },
+    { "source": "/vault", "destination": "https://russ751-pi.seahorse-edmontosaurus.ts.net:8443", "permanent": false },
+    { "source": "/money", "destination": "https://russ751-pi.seahorse-edmontosaurus.ts.net:8444", "permanent": false }
+  ]
+}
