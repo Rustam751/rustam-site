@@ -236,6 +236,16 @@ export const projects: Project[] = [
     ],
   },
   {
+    name: "Raspberry Pi Homelab",
+    period: "May 2026 – Present",
+    blurb:
+      "A Raspberry Pi running Docker hosts Home Assistant and a handful of self-hosted apps on a private subnet. Web services sit behind a Caddy reverse proxy and are reachable remotely only over Tailscale. Watchdogs, integrity-checked backups and docs that regenerate their live sections every night keep it maintainable.",
+    impact: "No ports opened to the internet",
+    bullets: [],
+    tags: ["Self-hosting", "Docker", "Linux", "Networking", "Home Assistant", "Tailscale"],
+    links: [],
+  },
+  {
     name: "Alzheimer's PET Classification",
     period: "Aug – Dec 2024",
     blurb:
