@@ -1,20 +1,22 @@
 import { skills } from "@/lib/data";
 
+// The skill groups as a plain two-column list: group name on the left,
+// its items as one line of text on the right.
 export default function Skills() {
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
+    <dl className="spec">
       {Object.entries(skills).map(([group, items]) => (
-        <div key={group} className="card p-5">
-          <h3 className="text-sm font-semibold text-[var(--text)]">{group}</h3>
-          <div className="mt-3 flex flex-wrap gap-1.5">
-            {items.map((s) => (
-              <span key={s} className="tag">
-                {s}
-              </span>
-            ))}
-          </div>
+        <div key={group}>
+          <dt>{group}</dt>
+          <dd>
+            <ul className="tag-line">
+              {items.map((s) => (
+                <li key={s}>{s}</li>
+              ))}
+            </ul>
+          </dd>
         </div>
       ))}
-    </div>
+    </dl>
   );
 }

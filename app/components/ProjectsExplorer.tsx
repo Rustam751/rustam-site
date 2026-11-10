@@ -4,41 +4,37 @@ import ProjectCard from "./ProjectCard";
 import type { Project } from "@/lib/data";
 
 export default function ProjectsExplorer({ projects }: { projects: Project[] }) {
-  const allTags = useMemo(() => {
-    const set = new Set<string>();
-    projects.forEach((p) => p.tags.forEach((t) => set.add(t)));
-    return ["All", ...Array.from(set).sort()];
+  // Offer only the tags that at least two projects share. A tag used once
+  // would just pick out a single project.
+  const tags = useMemo(() => {
+    const count = new Map<string, number>();
+    projects.forEach((p) => p.tags.forEach((t) => count.set(t, (count.get(t) ?? 0) + 1)));
+    const shared = [...count].filter(([, n]) => n >= 2).map(([t]) => t);
+    return ["All", ...shared.sort()];
   }, [projects]);
 
   const [active, setActive] = useState("All");
 
   const filtered =
-    active === "All"
-      ? projects
-      : projects.filter((p) => p.tags.includes(active));
+    active === "All" ? projects : projects.filter((p) => p.tags.includes(active));
 
   return (
     <div>
-      <div className="mb-7 flex flex-wrap gap-2">
-        {allTags.map((t) => {
-          const on = active === t;
-          return (
-            <button
-              key={t}
-              onClick={() => setActive(t)}
-              className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
-                on
-                  ? "border-transparent bg-gradient-to-r from-[var(--accent)] to-[var(--accent-2)] text-[var(--on-accent)]"
-                  : "border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] hover:border-[var(--border-strong)]"
-              }`}
-            >
-              {t}
-            </button>
-          );
-        })}
+      <div role="group" aria-label="Filter projects by technology" className="mb-7 flex flex-wrap gap-2">
+        {tags.map((t) => (
+          <button
+            key={t}
+            type="button"
+            onClick={() => setActive(t)}
+            aria-pressed={active === t}
+            className="chip"
+          >
+            {t}
+          </button>
+        ))}
       </div>
 
-      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3 md:gap-4">
         {filtered.map((p) => (
           <ProjectCard key={p.name} p={p} />
         ))}

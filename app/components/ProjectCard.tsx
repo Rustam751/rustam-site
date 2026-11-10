@@ -1,90 +1,78 @@
-"use client";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import type { Project, ProjectLink } from "@/lib/data";
+import type { Project } from "@/lib/data";
 import LinkIcon from "./LinkIcon";
 
-const pill =
-  "inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] px-3 py-1.5 text-xs font-medium text-[var(--text-muted)] transition-colors";
-
+// One project as a wide row: what it is on the left, the measured result
+// and the links on the right. Used on the home page and on /projects.
 export default function ProjectCard({ p }: { p: Project }) {
   // Projects with a slug have their own page at /projects/<slug>.
-  const pageHref = p.slug ? `/projects/${p.slug}` : null;
+  const href = p.slug ? `/projects/${p.slug}` : null;
+  const hasLinks = Boolean(href) || p.links.length > 0;
+  const hasAside = Boolean(p.impact) || hasLinks;
 
   return (
-    <motion.article
-      className="card card-hover group relative flex flex-col p-5"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.45 }}
+    <article
+      className={[
+        "card reveal relative grid gap-3.5 p-5 md:p-7",
+        hasAside &&
+          "md:grid-cols-[minmax(0,1fr)_18.5rem] md:grid-rows-[auto_auto_1fr] md:gap-x-10 md:gap-y-2.5",
+        href && "card-link",
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
-      <h3 className="text-base font-semibold tracking-tight group-hover:text-[var(--accent)] transition-colors">
-        {pageHref ? (
-          // The ::after layer stretches this link over the whole card, so a
-          // click anywhere on the card opens the project page.
-          <Link
-            href={pageHref}
-            className="rounded-sm after:absolute after:inset-0 after:rounded-2xl after:content-['']"
-          >
-            {p.name}
-          </Link>
-        ) : (
-          p.name
-        )}
-      </h3>
-
-      <p className="mt-1 text-xs text-[var(--text-faint)]">{p.period}</p>
-
-      {p.impact && (
-        <p className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-[var(--accent-2)]">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-            <path d="m5 12 5 5L20 7" />
-          </svg>
-          {p.impact}
-        </p>
-      )}
-
-      <p className="mt-2 text-sm text-[var(--text-muted)] leading-relaxed">{p.blurb}</p>
-
-      <div className="mt-4 flex flex-wrap gap-1.5">
-        {p.tags.map((t) => (
-          <span key={t} className="tag">
-            {t}
-          </span>
-        ))}
-      </div>
-
-      {(pageHref || p.links.length > 0) && (
-        <div className="mt-auto flex flex-wrap gap-2 pt-5">
-          {pageHref && (
-            // Visual cue only: the stretched title link above already makes
-            // the whole card open the project page.
-            <span
-              aria-hidden
-              className={`${pill} border-[var(--border-strong)] text-[var(--text)] group-hover:border-[var(--accent)] group-hover:text-[var(--accent)]`}
-            >
-              Case study
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <header className="md:col-start-1 md:row-start-1">
+        <p className="meta">{p.period}</p>
+        <h3 className="card-title mt-1.5">
+          {href ? (
+            // "stretched" lays this link over the whole row, so a click
+            // anywhere on the row opens the project page.
+            <Link href={href} className="stretched">
+              {p.name}
+              <svg className="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
-            </span>
+            </Link>
+          ) : (
+            p.name
           )}
-          {p.links.map((l: ProjectLink) => (
-            <a
-              key={l.href}
-              href={l.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              // relative + z-10 keeps these clickable above the stretched link.
-              className={`${pill} relative z-10 hover:border-[var(--border-strong)] hover:text-[var(--accent)]`}
-            >
-              <LinkIcon label={l.label} />
-              {l.label}
-            </a>
-          ))}
-        </div>
+        </h3>
+      </header>
+
+      {p.impact && (
+        <p className="proof md:col-start-2 md:row-span-2 md:row-start-1 md:self-start">{p.impact}</p>
       )}
-    </motion.article>
+
+      <div className="md:col-start-1 md:row-span-2 md:row-start-2">
+        <p className="max-w-[62ch] text-[0.9375rem] leading-[1.65] text-[var(--text-muted)]">{p.blurb}</p>
+        <ul aria-label="Technologies" className="tag-line mt-3.5">
+          {p.tags.map((t) => (
+            <li key={t}>{t}</li>
+          ))}
+        </ul>
+      </div>
+
+      {hasLinks && (
+        // The list itself lets clicks through to the stretched link; only
+        // the real links inside it catch them.
+        <ul className="pointer-events-none relative z-10 flex flex-wrap items-center gap-x-4 gap-y-2 md:col-start-2 md:row-start-3 md:self-end">
+          {href && (
+            // Visual cue only: the title link above is the real link.
+            <li aria-hidden className="link-quiet text-[var(--accent-text)]">
+              Case study
+              <span>→</span>
+            </li>
+          )}
+          {p.links.map((l) => (
+            <li key={l.href}>
+              <a href={l.href} target="_blank" rel="noopener noreferrer" className="link-quiet pointer-events-auto">
+                <LinkIcon label={l.label} />
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </article>
   );
 }

@@ -58,6 +58,7 @@ export default function Header() {
                 <Link
                   key={l.href}
                   href={l.href}
+                  aria-current={active ? "page" : undefined}
                   className={`rounded-lg px-3 py-1.5 text-sm transition-colors ${
                     active
                       ? "text-[var(--text)] bg-[var(--surface-hover)]"
@@ -73,7 +74,7 @@ export default function Header() {
           <div className="flex items-center gap-2">
             <Link
               href="/resume/Russ_Mukhtar_CV.pdf"
-              className="hidden md:inline-flex btn btn-primary !py-1.5 !px-3.5 text-sm"
+              className="hidden md:inline-flex btn btn-sm"
             >
               Download CV
             </Link>
@@ -115,6 +116,7 @@ export default function Header() {
                 <Link
                   key={l.href}
                   href={l.href}
+                  aria-current={active ? "page" : undefined}
                   onClick={close}
                   className={`rounded-lg px-3 py-2.5 text-sm ${
                     active

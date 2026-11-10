@@ -1,32 +1,23 @@
-import Link from "next/link";
 import { profile } from "@/lib/data";
 
 const socials = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/russmukhtar" },
   { label: "GitHub", href: "https://github.com/Rustam751" },
-  { label: "Email", href: "mailto:rustam@mukhtarov.dev" },
+  { label: "Email", href: `mailto:${profile.email}` },
 ];
 
+// One quiet row. The contact block above it already carries the invitation.
 export default function Footer() {
   return (
-    <footer className="mt-24 border-t border-[var(--border)]">
-      <div className="mx-auto max-w-5xl px-5 sm:px-6 lg:px-8 py-10">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-lg font-semibold tracking-tight">
-              Let&apos;s build something.
-            </p>
-            <a
-              href="mailto:rustam@mukhtarov.dev"
-              className="mt-1 inline-block text-sm text-[var(--accent)] hover:underline underline-offset-4"
-            >
-              rustam@mukhtarov.dev
-            </a>
-          </div>
-          <div className="flex flex-wrap gap-4 text-sm">
-            {socials.map((s) => (
+    <footer className="mt-[var(--space-section)] border-t border-[var(--border)]">
+      <div className="mx-auto flex max-w-5xl flex-col gap-4 px-5 py-8 text-[0.8125rem] text-[var(--text-faint)] sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+        <span>
+          © {new Date().getFullYear()} {profile.name}. All rights reserved.
+        </span>
+        <ul className="flex flex-wrap gap-x-5 gap-y-2">
+          {socials.map((s) => (
+            <li key={s.label}>
               <a
-                key={s.label}
                 href={s.href}
                 target={s.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
@@ -34,17 +25,10 @@ export default function Footer() {
               >
                 {s.label}
               </a>
-            ))}
-          </div>
-        </div>
-        <div className="mt-8 flex flex-col gap-2 border-t border-[var(--border)] pt-6 text-xs text-[var(--text-faint)] md:flex-row md:items-center md:justify-between">
-          <span>© {new Date().getFullYear()} {profile.name}. All rights reserved.</span>
-          <span>
-            Built with{" "}
-            <Link href="https://nextjs.org" className="link-muted">Next.js</Link>
-            {" "}+ Tailwind · Deployed on Vercel.
-          </span>
-        </div>
+            </li>
+          ))}
+        </ul>
+        <span>Built with Next.js + Tailwind · Deployed on Vercel.</span>
       </div>
     </footer>
   );
