@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function EducationPage() {
   return (
     <div className="py-12">
-      <SectionTitle eyebrow="Academics" title="Education" />
+      <SectionTitle as="h1" eyebrow="Academics" title="Education" />
 
       <div className="grid gap-5">
         {education.map((e) => (

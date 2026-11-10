@@ -33,6 +33,7 @@ export default function AboutPage() {
   return (
     <div className="py-12">
       <SectionTitle
+        as="h1"
         eyebrow="About"
         title="Who I am, and how I work"
         subtitle="What I build, and what I'm exploring next."

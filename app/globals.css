@@ -12,10 +12,11 @@
   --border-strong: rgba(255, 255, 255, 0.16);
   --text: #ededf2;
   --text-muted: #a1a1ac;
-  --text-faint: #71717a;
+  --text-faint: #8b8b96; /* 5.9:1 on --bg, readable at small sizes */
   --accent: #8b9bff;
   --accent-2: #4fd6e0;
   --accent-glow: rgba(124, 140, 255, 0.35);
+  --on-accent: #0a0a0f; /* text on top of the accent gradient */
 }
 
 @theme inline {
@@ -55,6 +56,27 @@ body::before {
 ::selection {
   background: var(--accent-glow);
   color: #fff;
+}
+
+/* Keyboard focus: one clear ring everywhere. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Visitors who ask for less motion get no smooth scrolling, pulsing or lifts. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Thin custom scrollbar */
@@ -116,7 +138,7 @@ body::before {
   .btn-primary {
     border: 1px solid transparent;
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    color: #0a0a0f;
+    color: var(--on-accent);
     font-weight: 600;
     box-shadow: 0 8px 24px -10px var(--accent-glow);
   }

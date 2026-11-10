@@ -19,6 +19,7 @@ export default function ProjectsPage() {
   return (
     <div className="py-12">
       <SectionTitle
+        as="h1"
         eyebrow="Portfolio"
         title="Projects"
         subtitle="Filter by stack. More on GitHub."

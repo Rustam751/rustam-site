@@ -28,7 +28,7 @@ export default function ProjectsExplorer({ projects }: { projects: Project[] }) 
               onClick={() => setActive(t)}
               className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
                 on
-                  ? "border-transparent bg-gradient-to-r from-[var(--accent)] to-[var(--accent-2)] text-[#0a0a0f]"
+                  ? "border-transparent bg-gradient-to-r from-[var(--accent)] to-[var(--accent-2)] text-[var(--on-accent)]"
                   : "border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text)] hover:border-[var(--border-strong)]"
               }`}
             >

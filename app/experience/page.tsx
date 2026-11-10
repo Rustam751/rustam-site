@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ExperiencePage() {
   return (
     <div className="py-12">
-      <SectionTitle eyebrow="Career" title="Experience" />
+      <SectionTitle as="h1" eyebrow="Career" title="Experience" />
 
       <div className="relative ml-1 border-l border-[var(--border)] pl-7">
         {experience.map((job) => (

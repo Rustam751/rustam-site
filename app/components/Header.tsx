@@ -29,7 +29,7 @@ export default function Header() {
     <header
       className={`sticky top-0 z-50 transition-colors duration-300 ${
         scrolled
-          ? "backdrop-blur-md bg-[#08080b]/80 border-b border-[var(--border)]"
+          ? "backdrop-blur-md bg-[color-mix(in_srgb,var(--bg)_80%,transparent)] border-b border-[var(--border)]"
           : "border-b border-transparent"
       }`}
     >
@@ -41,7 +41,7 @@ export default function Header() {
             className="flex items-center gap-2 font-semibold tracking-tight"
             aria-label="Home"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-[var(--accent)] to-[var(--accent-2)] text-sm font-bold text-[#0a0a0f]">
+            <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-[var(--accent)] to-[var(--accent-2)] text-sm font-bold text-[var(--on-accent)]">
               RM
             </span>
             <span className="hidden sm:inline text-sm text-[var(--text-muted)]">
@@ -106,7 +106,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-[var(--border)] bg-[#08080b]/95 backdrop-blur-md">
+        <div className="md:hidden border-t border-[var(--border)] bg-[color-mix(in_srgb,var(--bg)_95%,transparent)] backdrop-blur-md">
           <nav className="mx-auto max-w-5xl px-5 py-3 flex flex-col gap-1">
             {links.map((l) => {
               const active =
