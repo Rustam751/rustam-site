@@ -53,6 +53,7 @@ const linkText: Record<string, string> = {
   GitHub: "Code on GitHub",
   Docs: "Read the README",
   "Live demo": "Open the live demo",
+  "Project site": "Open the project site",
 };
 
 function Bullets({ items }: { items: string[] }) {

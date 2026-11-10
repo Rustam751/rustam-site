@@ -201,18 +201,19 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    name: "DriveShare – App & Website",
-    period: "Jan – May 2025",
+    slug: "driveshare",
+    name: "DriveShare",
+    period: "Fall 2025",
     blurb:
-      "Peer-to-peer parking marketplace: homeowners rent driveways; drivers book affordable spots.",
-    impact: "Two-sided marketplace, web + mobile",
+      "Concept and prototype for a peer-to-peer parking marketplace: homeowners rent out driveways and drivers reserve them. A four-person HCI course project that went from student interviews to Figma prototypes. I built the project website.",
+    impact: "Team project: three prototype rounds and a 3-participant think-aloud test",
     bullets: [
-      "Built website + mobile prototype with Next.js/Tailwind + PostgreSQL backend: listings, location-based search, bookings, payments.",
-      "Designed driver/homeowner flows, Figma wireframes; iterative usability testing.",
+      "Front-end developer on a four-person team: built the project website with Next.js, React, TypeScript and Tailwind CSS.",
+      "The team ran student interviews, made a paper prototype and then mid-fi and hi-fi Figma prototypes, and tested the mid-fi version with three think-aloud participants.",
     ],
-    tags: ["Next.js", "Tailwind", "PostgreSQL", "Figma"],
+    tags: ["Next.js", "Tailwind", "Figma", "HCI"],
     links: [
-      { label: "Live demo", href: "https://driveshare.mukhtarov.dev/" },
+      { label: "Project site", href: "https://driveshare.mukhtarov.dev/" },
       { label: "GitHub", href: "https://github.com/Rustam751/driveshare-app" },
     ],
     featured: true,

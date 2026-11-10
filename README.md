@@ -44,9 +44,9 @@ Repository: https://github.com/Abdoul1996/Alzheimer_Classification
 
 ### DriveShare
 
-A peer-to-peer driveway rental marketplace prototype where homeowners can list unused driveway space and drivers can reserve affordable parking.
+Concept and prototype for a peer-to-peer parking marketplace, made as a four-person HCI course project (Fall 2025). I built the project website.
 
-Live Demo: https://driveshare.mukhtarov.dev/  
+Project site: https://driveshare.mukhtarov.dev/  
 Repository: https://github.com/Rustam751/driveshare-app
 
 ---

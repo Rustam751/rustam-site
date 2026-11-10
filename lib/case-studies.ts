@@ -304,6 +304,94 @@ export const caseStudies: Record<string, CaseStudy> = {
       { group: "Tooling", items: ["pytest", "Ruff", "GitHub Actions", "Docker"] },
     ],
   },
+
+  driveshare: {
+    metaDescription:
+      "Case study: DriveShare, a four-person HCI course project for a peer-to-peer parking marketplace. Interviews, Figma prototypes, usability testing and a Next.js site.",
+    intro:
+      "DriveShare is a concept for a peer-to-peer parking marketplace: homeowners rent out driveways and drivers reserve them. It was a four-person HCI course project. I was the front-end developer and built the project website.",
+    role: "Team of four · front-end developer",
+    solo: false,
+    highlights: [
+      { value: "3", label: "prototype rounds: lo-fi, mid-fi and hi-fi" },
+      { value: "3", label: "participants in the think-aloud test" },
+      { value: "10", label: "Nielsen heuristics in the team's own review" },
+      { value: "4", label: "personas: two students and two driveway owners" },
+    ],
+    note:
+      "This is a design project, not a working marketplace. The app exists as Figma prototypes and the website presents the research and design work. The website has no database, booking or payment code.",
+    steps: {
+      heading: "How the project ran",
+      items: [
+        {
+          title: "Interviews",
+          text: "The team ran semi-structured interviews with commuting students. Safety and reliability came out as important as price.",
+        },
+        {
+          title: "Themes and personas",
+          text: "Interview notes were grouped into four themes: safety, convenience, interaction and current issues. The team also wrote four personas (two students and two driveway owners), an empathy map and an experience map.",
+        },
+        {
+          title: "Lo-fi prototype",
+          text: "The first round was low-fidelity: an early paper prototype and a flow map in Figma. It mainly validated the concept and the task flow.",
+        },
+        {
+          title: "Mid-fi prototype",
+          text: "A medium-fidelity Figma prototype for mobile supported the renter side in full and the homeowner listing flow in part.",
+        },
+        {
+          title: "Think-aloud test",
+          text: "Three participants, two student commuters and one homeowner, used the prototype while thinking aloud. One change, showing driveway photos earlier in the flow, went straight into the prototype.",
+        },
+        {
+          title: "Hi-fi prototype",
+          text: "Before the final version the team reviewed the design against Nielsen's 10 usability heuristics and recorded one issue per heuristic with its fixes. The report says all ten were addressed in the high-fidelity Figma prototype, which has separate renter and homeowner flows.",
+        },
+      ],
+    },
+    sections: [
+      {
+        title: "The problem",
+        paragraphs: [
+          "Drivers waste time circling for parking while many homeowners have driveway space that sits unused. In the team's interviews, commuting students reported spending roughly 10 to 30 minutes looking for a spot before class.",
+          "The idea: homeowners list driveway space for set time windows and drivers reserve a slot. Time-boxed reservations are meant to reduce conflicts and overstays.",
+        ],
+      },
+      {
+        title: "My part",
+        paragraphs: [
+          "I was the front-end developer on a four-person team. I built the project website with Next.js, React, TypeScript and Tailwind CSS, and contributed to the driver and host flow design and the HCI write-ups.",
+        ],
+        bullets: [
+          "A landing page that explains the idea, the three-step journey (search, reserve, park) and the safety approach.",
+          "An analysis page with the interview themes, the four personas, the empathy map and the experience map.",
+          "A features page with 12 captioned tiles, 6 for drivers and 6 for homeowners.",
+          "A deliverables page that links six course documents, the FigJam board and two videos, and a team page with a profile for each member.",
+        ],
+      },
+      {
+        title: "What testing changed",
+        paragraphs: [
+          "The think-aloud sessions produced one immediate change and a list of refinement goals: buffer and extension time after booking, in-app messaging, safety verification indicators, multiple photos per listing and pricing suggestions.",
+          "The high-fidelity prototype's README lists smart pricing suggestions and enhanced safety and verification among its additions. The prototype also gives homeowners a full flow: list a driveway, upload photos, add safety tags, set availability and pricing, and view a dashboard.",
+        ],
+      },
+      {
+        title: "Limits",
+        bullets: [
+          "This is a design project. Prototype functionality is not real: nothing is saved, booked or paid for.",
+          "The landing and features pages describe the intended product, including in-app payment and host payouts. The website itself takes no payments. Its listings are placeholder text and the request-demo form does not submit anywhere.",
+          "The feature images are generated concept images, not screenshots of an app.",
+          "Usability testing was small and qualitative. The documented think-aloud round had three participants.",
+          "The heuristic review was done by the team itself, not by outside evaluators.",
+        ],
+      },
+    ],
+    stack: [
+      { group: "Website", items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Biome"] },
+      { group: "Design and research", items: ["Figma", "FigJam", "Paper prototyping", "Think-aloud testing", "Heuristic evaluation"] },
+    ],
+  },
 };
 
 export type CaseStudyEntry = {
