@@ -17,13 +17,15 @@ export const revalidate = 3600;
 
 export default function ProjectsPage() {
   return (
-    <div className="py-12">
+    <div className="pt-10 md:pt-14">
       <SectionTitle
         as="h1"
         eyebrow="Portfolio"
         title="Projects"
         subtitle="Filter by stack. More on GitHub."
       />
+      {/* Hidden heading so the project names (h3) sit under an h2 for screen readers */}
+      <h2 className="sr-only">All projects</h2>
       <ProjectsExplorer projects={projects} />
       <GitHubActivity />
     </div>

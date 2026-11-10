@@ -16,15 +16,11 @@ export default async function GitHubActivity() {
   if (repos.length === 0) return null;
 
   return (
-    <section className="mt-20">
+    <section className="section">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-xs font-medium uppercase tracking-widest text-[var(--accent)]">
-            Live from GitHub
-          </p>
-          <h2 className="mt-2 text-2xl font-bold tracking-tight">
-            Latest repositories
-          </h2>
+          <p className="eyebrow">Live from GitHub</p>
+          <h2 className="h-section mt-3">Latest repositories</h2>
           <p className="mt-2 text-sm text-[var(--text-muted)]">
             Synced automatically from the GitHub API — new projects show up here on
             their own.
@@ -34,7 +30,7 @@ export default async function GitHubActivity() {
           href="https://github.com/Rustam751"
           target="_blank"
           rel="noopener noreferrer"
-          className="link-muted mb-1 text-sm"
+          className="link-quiet mb-1"
         >
           github.com/Rustam751 →
         </a>
@@ -47,7 +43,7 @@ export default async function GitHubActivity() {
             href={r.html_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="card card-hover group flex flex-col p-5"
+            className="card card-link group flex flex-col p-5"
           >
             <div className="flex items-start justify-between gap-3">
               <h3 className="font-mono text-sm font-semibold tracking-tight group-hover:text-[var(--accent)] transition-colors">

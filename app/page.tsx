@@ -3,7 +3,6 @@ import Hero from "./components/Hero";
 import SectionTitle from "./components/SectionTitle";
 import ProjectCard from "./components/ProjectCard";
 import Skills from "./components/Skills";
-import ContactCTA from "./components/ContactCTA";
 import { projects } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -40,11 +39,6 @@ export default function Page() {
           subtitle="From models and evaluation through APIs, Docker, and CI."
         />
         <Skills />
-      </section>
-
-      {/* Contact */}
-      <section className="section">
-        <ContactCTA />
       </section>
     </div>
   );

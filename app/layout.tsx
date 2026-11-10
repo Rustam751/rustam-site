@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import JsonLd from "./components/JsonLd";
-import MotionProvider from "./components/MotionProvider";
+import ContactCTA from "./components/ContactCTA";
 import { profile, siteUrl } from "@/lib/data";
 
 const inter = Inter({
@@ -80,13 +80,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} dark`}>
       <body className="min-h-screen flex flex-col antialiased">
-        <MotionProvider>
-          <Header />
-          <main className="flex-1 w-full mx-auto max-w-5xl px-5 sm:px-6 lg:px-8">
-            {children}
-          </main>
-          <Footer />
-        </MotionProvider>
+        <Header />
+        <main className="flex-1 w-full mx-auto max-w-5xl px-5 sm:px-6 lg:px-8">
+          {children}
+          {/* The same contact block closes every page. */}
+          <section className="section">
+            <ContactCTA />
+          </section>
+        </main>
+        <Footer />
         <JsonLd data={personJsonLd} />
       </body>
     </html>

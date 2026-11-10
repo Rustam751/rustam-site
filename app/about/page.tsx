@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import SectionTitle from "../components/SectionTitle";
 
 export const metadata: Metadata = {
@@ -31,7 +30,7 @@ const principles = [
 
 export default function AboutPage() {
   return (
-    <div className="py-12">
+    <div className="pt-10 md:pt-14">
       <SectionTitle
         as="h1"
         eyebrow="About"
@@ -57,11 +56,11 @@ export default function AboutPage() {
         </div>
 
         <aside className="card h-max p-5">
-          <h3 className="text-sm font-semibold">Quick facts</h3>
+          <h2 className="text-sm font-semibold">Quick facts</h2>
           <dl className="mt-3 space-y-2.5 text-sm">
             {quickFacts.map(([k, v]) => (
               <div key={k}>
-                <dt className="text-[var(--text-faint)]">{k}</dt>
+                <dt className="meta">{k}</dt>
                 <dd className="text-[var(--text-muted)]">{v}</dd>
               </div>
             ))}
@@ -75,16 +74,16 @@ export default function AboutPage() {
       </div>
 
       {/* What I do */}
-      <section className="mt-16">
-        <h3 className="text-xl font-semibold tracking-tight">What I do</h3>
+      <section className="section">
+        <h2 className="h-sub">What I do</h2>
         <p className="mt-3 text-[var(--text-muted)] leading-relaxed max-w-2xl">
           I take ML from notebook to deployed service: data prep, training, evaluation, serving, and
           the interface on top. I&apos;m comfortable moving across model pipelines, backends, and
           frontends — prioritizing correctness, reproducibility, and measurable outcomes.
         </p>
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
+        <div className="mt-6 grid gap-x-8 gap-y-6 md:grid-cols-3">
           {doCards.map(([t, d]) => (
-            <div key={t} className="card p-5">
+            <div key={t} className="rule-col">
               <div className="font-medium">{t}</div>
               <div className="mt-1 text-sm text-[var(--text-muted)]">{d}</div>
             </div>
@@ -93,8 +92,8 @@ export default function AboutPage() {
       </section>
 
       {/* Current focus */}
-      <section className="mt-16">
-        <h3 className="text-xl font-semibold tracking-tight">Current focus</h3>
+      <section className="section">
+        <h2 className="h-sub">Current focus</h2>
         <ul className="mt-4 space-y-2.5 text-[var(--text-muted)]">
           {[
             "Hybrid retrieval (BM25 + dense) and evaluation harnesses for RAG systems.",
@@ -110,8 +109,8 @@ export default function AboutPage() {
       </section>
 
       {/* Thesis */}
-      <section className="mt-16">
-        <h3 className="text-xl font-semibold tracking-tight">Graduate thesis</h3>
+      <section className="section">
+        <h2 className="h-sub">Graduate thesis</h2>
         <div className="card mt-4 p-6">
           <p className="text-[var(--text-muted)] leading-relaxed">
             <strong className="text-[var(--text)]">
@@ -126,11 +125,11 @@ export default function AboutPage() {
       </section>
 
       {/* Principles */}
-      <section className="mt-16">
-        <h3 className="text-xl font-semibold tracking-tight">Principles I work by</h3>
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
+      <section className="section">
+        <h2 className="h-sub">Principles I work by</h2>
+        <div className="mt-6 grid gap-x-8 gap-y-6 md:grid-cols-3">
           {principles.map(([t, d]) => (
-            <div key={t} className="card p-5">
+            <div key={t} className="rule-col">
               <div className="font-medium">{t}</div>
               <div className="mt-1 text-sm text-[var(--text-muted)]">{d}</div>
             </div>
@@ -139,19 +138,13 @@ export default function AboutPage() {
       </section>
 
       {/* Beyond work */}
-      <section className="mt-16">
-        <h3 className="text-xl font-semibold tracking-tight">Beyond work</h3>
+      <section className="section">
+        <h2 className="h-sub">Beyond work</h2>
         <p className="mt-3 text-[var(--text-muted)] leading-relaxed max-w-2xl">
           I lift, swim, and play basketball to reset my brain. Music (piano &amp; guitar) keeps me
           curious and patient. I enjoy learning languages and exploring SF&apos;s food scene.
         </p>
       </section>
-
-      {/* CTA */}
-      <div className="mt-14 flex flex-wrap gap-3">
-        <a href="mailto:rustam@mukhtarov.dev" className="btn btn-primary">Get in touch</a>
-        <Link href="/projects" className="btn">See projects</Link>
-      </div>
     </div>
   );
 }

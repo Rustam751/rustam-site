@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <div className="py-12">
+    <div className="pt-10 md:pt-14">
       <SectionTitle as="h1" eyebrow="Career" title="Experience" />
 
       <div className="relative ml-1 border-l border-[var(--border)] pl-7">
@@ -23,32 +23,24 @@ export default function ExperiencePage() {
             </span>
 
             <div className="card p-5">
-              <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
+              <div className="flex flex-col gap-1 md:flex-row md:items-start md:justify-between md:gap-6">
                 <div>
-                  <h3 className="text-lg font-semibold tracking-tight">
-                    {job.role}{" "}
-                    <span className="text-[var(--text-faint)]">·</span>{" "}
+                  <h2 className="card-title">{job.role}</h2>
+                  <p className="mt-1 text-sm text-[var(--text-muted)]">
                     {job.link ? (
-                      <a
-                        href={job.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[var(--accent)] hover:underline underline-offset-4"
-                      >
+                      <a href={job.link} target="_blank" rel="noopener noreferrer" className="link">
                         {job.company}
                       </a>
                     ) : (
-                      <span>{job.company}</span>
+                      job.company
                     )}
-                  </h3>
-                  <p className="text-sm text-[var(--text-faint)]">{job.location}</p>
+                    <span className="text-[var(--text-faint)]"> · {job.location}</span>
+                  </p>
                 </div>
-                <span className="shrink-0 text-sm text-[var(--text-muted)]">
-                  {job.period}
-                </span>
+                <span className="meta shrink-0 md:pt-1.5">{job.period}</span>
               </div>
 
-              <ul className="mt-4 space-y-2 text-sm text-[var(--text-muted)]">
+              <ul className="mt-4 space-y-2 text-[0.9375rem] text-[var(--text-muted)]">
                 {job.bullets.map((b) => (
                   <li key={b} className="flex gap-2.5">
                     <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[var(--accent)]" />
