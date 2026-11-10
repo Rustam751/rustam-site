@@ -72,7 +72,7 @@ Repository: https://github.com/mucahitkalebasi/tennis-line-detection-img-process
 - **Framework:** Next.js
 - **Language:** TypeScript
 - **Frontend:** React, Tailwind CSS
-- **Animation:** Framer Motion
+- **Animation:** plain CSS (no animation library)
 - **Deployment:** Vercel
 
 ---

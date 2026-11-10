@@ -33,6 +33,12 @@ export default function ProjectsExplorer({ projects }: { projects: Project[] }) 
           </button>
         ))}
       </div>
+      {/* Read out by screen readers when the filter changes the list. */}
+      <p role="status" className="sr-only">
+        {active === "All"
+          ? `Showing all ${filtered.length} projects`
+          : `Showing ${filtered.length} projects tagged ${active}`}
+      </p>
 
       <div className="grid gap-3 md:gap-4">
         {filtered.map((p) => (

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -25,11 +25,29 @@ export default function Header() {
 
   const close = () => setOpen(false);
 
+  // Escape closes the phone menu and puts focus back on its button.
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      toggleRef.current?.focus();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  // The exact page is marked "page"; a page below it (a case study under
+  // Projects) marks its section "true".
+  const current = (href: string, active: boolean) =>
+    pathname === href ? "page" : active ? "true" : undefined;
+
   return (
     <header
       className={`sticky top-0 z-50 transition-colors duration-300 ${
         scrolled
-          ? "backdrop-blur-md bg-[color-mix(in_srgb,var(--bg)_80%,transparent)] border-b border-[var(--border)]"
+          ? "backdrop-blur-md bg-[color-mix(in_srgb,var(--bg)_88%,transparent)] border-b border-[var(--border)]"
           : "border-b border-transparent"
       }`}
     >
@@ -39,7 +57,7 @@ export default function Header() {
             href="/"
             onClick={close}
             className="flex items-center gap-2 font-semibold tracking-tight"
-            aria-label="Home"
+            aria-label="Rustam Mukhtarov, home"
           >
             <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-[var(--accent)] to-[var(--accent-2)] text-sm font-bold text-[var(--on-accent)]">
               RM
@@ -50,7 +68,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav aria-label="Main" className="hidden md:flex items-center gap-1">
             {links.map((l) => {
               const active =
                 l.href === "/" ? pathname === "/" : pathname.startsWith(l.href);
@@ -58,7 +76,7 @@ export default function Header() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  aria-current={active ? "page" : undefined}
+                  aria-current={current(l.href, active)}
                   className={`rounded-lg px-3 py-1.5 text-sm transition-colors ${
                     active
                       ? "text-[var(--text)] bg-[var(--surface-hover)]"
@@ -72,15 +90,20 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <Link
+            {/* A plain link, not <Link>: the CV is a file, not a page. */}
+            <a
               href="/resume/Russ_Mukhtar_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden md:inline-flex btn btn-sm"
             >
               Download CV
-            </Link>
+            </a>
 
             {/* Mobile toggle */}
             <button
+              ref={toggleRef}
+              type="button"
               onClick={() => setOpen((v) => !v)}
               className="md:hidden grid h-9 w-9 place-items-center rounded-lg border border-[var(--border)] text-[var(--text)]"
               aria-label="Toggle menu"
@@ -108,7 +131,7 @@ export default function Header() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden border-t border-[var(--border)] bg-[color-mix(in_srgb,var(--bg)_95%,transparent)] backdrop-blur-md">
-          <nav className="mx-auto max-w-5xl px-5 py-3 flex flex-col gap-1">
+          <nav aria-label="Main" className="mx-auto max-w-5xl px-5 py-3 flex flex-col gap-1">
             {links.map((l) => {
               const active =
                 l.href === "/" ? pathname === "/" : pathname.startsWith(l.href);
@@ -116,7 +139,7 @@ export default function Header() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  aria-current={active ? "page" : undefined}
+                  aria-current={current(l.href, active)}
                   onClick={close}
                   className={`rounded-lg px-3 py-2.5 text-sm ${
                     active
@@ -128,13 +151,15 @@ export default function Header() {
                 </Link>
               );
             })}
-            <Link
+            <a
               href="/resume/Russ_Mukhtar_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={close}
               className="btn btn-primary mt-2 justify-center"
             >
               Download CV
-            </Link>
+            </a>
           </nav>
         </div>
       )}

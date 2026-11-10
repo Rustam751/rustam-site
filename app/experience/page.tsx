@@ -17,12 +17,12 @@ export default function ExperiencePage() {
       <div className="relative ml-1 border-l border-[var(--border)] pl-7">
         {experience.map((job) => (
           <div key={job.role + job.company} className="relative pb-10 last:pb-0">
-            {/* dot */}
-            <span className="absolute -left-[33px] top-1.5 grid h-3.5 w-3.5 place-items-center rounded-full border border-[var(--border-strong)] bg-[var(--bg)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent-2)]" />
+            {/* Dot: centred on the line and level with the job title. */}
+            <span className="absolute -left-[35px] top-[31px] grid h-[13px] w-[13px] place-items-center rounded-full border border-[var(--border-strong)] bg-[var(--bg)]">
+              <span className="h-[5px] w-[5px] rounded-full bg-gradient-to-br from-[var(--accent)] to-[var(--accent-2)]" />
             </span>
 
-            <div className="card p-5">
+            <div className="card p-6">
               <div className="flex flex-col gap-1 md:flex-row md:items-start md:justify-between md:gap-6">
                 <div>
                   <h2 className="card-title">{job.role}</h2>
@@ -34,7 +34,11 @@ export default function ExperiencePage() {
                     ) : (
                       job.company
                     )}
-                    <span className="text-[var(--text-faint)]"> · {job.location}</span>
+                    {/* The place gets its own line on phones. */}
+                    <span className="text-[var(--text-faint)]">
+                      <span className="max-sm:hidden"> · </span>
+                      <span className="max-sm:block">{job.location}</span>
+                    </span>
                   </p>
                 </div>
                 <span className="meta shrink-0 md:pt-1.5">{job.period}</span>

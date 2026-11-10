@@ -10,7 +10,7 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="mt-[var(--space-section)] border-t border-[var(--border)]">
-      <div className="mx-auto flex max-w-5xl flex-col gap-4 px-5 py-8 text-[0.8125rem] text-[var(--text-faint)] sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+      <div className="mx-auto flex max-w-5xl flex-col gap-4 px-5 py-8 text-[0.8125rem] text-[var(--text-faint)] sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
         <span>
           © {new Date().getFullYear()} {profile.name}. All rights reserved.
         </span>
@@ -21,7 +21,9 @@ export default function Footer() {
                 href={s.href}
                 target={s.href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className="link-muted"
+                // Padding for a larger tap area; the negative margin keeps
+                // the row where it was.
+                className="link-muted -my-2.5 inline-block py-2.5"
               >
                 {s.label}
               </a>

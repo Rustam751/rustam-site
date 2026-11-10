@@ -38,9 +38,10 @@ export default function AboutPage() {
         subtitle="What I build, and what I'm exploring next."
       />
 
-      {/* Intro + quick facts */}
-      <div className="grid gap-6 md:grid-cols-[1fr_320px]">
-        <div className="space-y-4 text-[var(--text-muted)] leading-relaxed">
+      {/* Wide screens: intro and "What I do" on the left, quick facts on the
+          right. Phones: intro, quick facts, then "What I do". */}
+      <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_320px] md:grid-rows-[auto_1fr] md:gap-x-10 md:gap-y-12">
+        <div className="space-y-4 text-[var(--text-muted)] leading-relaxed md:col-start-1 md:row-start-1">
           <p>
             I&apos;m <strong className="text-[var(--text)]">Rustam (Russ) Mukhtarov</strong>, an{" "}
             <strong className="text-[var(--text)]">ML/AI Engineer</strong> and M.S. candidate in
@@ -55,7 +56,7 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <aside className="card h-max p-5">
+        <aside className="card h-max p-5 md:col-start-2 md:row-span-2 md:row-start-1">
           <h2 className="text-sm font-semibold">Quick facts</h2>
           <dl className="mt-3 space-y-2.5 text-sm">
             {quickFacts.map(([k, v]) => (
@@ -71,25 +72,25 @@ export default function AboutPage() {
             <a href="https://www.linkedin.com/in/russmukhtar" target="_blank" rel="noreferrer" className="btn justify-center !py-2 col-span-2">LinkedIn</a>
           </div>
         </aside>
-      </div>
 
-      {/* What I do */}
-      <section className="section">
-        <h2 className="h-sub">What I do</h2>
-        <p className="mt-3 text-[var(--text-muted)] leading-relaxed max-w-2xl">
-          I take ML from notebook to deployed service: data prep, training, evaluation, serving, and
-          the interface on top. I&apos;m comfortable moving across model pipelines, backends, and
-          frontends — prioritizing correctness, reproducibility, and measurable outcomes.
-        </p>
-        <div className="mt-6 grid gap-x-8 gap-y-6 md:grid-cols-3">
-          {doCards.map(([t, d]) => (
-            <div key={t} className="rule-col">
-              <div className="font-medium">{t}</div>
-              <div className="mt-1 text-sm text-[var(--text-muted)]">{d}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+        {/* What I do */}
+        <section className="max-md:pt-10 md:col-start-1 md:row-start-2">
+          <h2 className="h-sub">What I do</h2>
+          <p className="mt-3 text-[var(--text-muted)] leading-relaxed">
+            I take ML from notebook to deployed service: data prep, training, evaluation, serving, and
+            the interface on top. I&apos;m comfortable moving across model pipelines, backends, and
+            frontends — prioritizing correctness, reproducibility, and measurable outcomes.
+          </p>
+          <div className="mt-6 grid gap-y-5">
+            {doCards.map(([t, d]) => (
+              <div key={t} className="rule-col">
+                <div className="font-medium">{t}</div>
+                <div className="mt-1 text-sm text-[var(--text-muted)]">{d}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
 
       {/* Current focus */}
       <section className="section">

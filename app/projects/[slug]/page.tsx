@@ -126,7 +126,8 @@ export default async function ProjectPage({ params }: Props) {
         <p className="lead mt-5 max-w-2xl">{study.intro}</p>
 
         {project.links.length > 0 && (
-          <div className="mt-7 flex flex-wrap gap-3">
+          // Stacked at full width on phones, side by side from 640px.
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {project.links.map((l, i) => (
               <a
                 key={l.href}
@@ -142,7 +143,7 @@ export default async function ProjectPage({ params }: Props) {
           </div>
         )}
 
-        <ul aria-label="Technologies" className="mt-6 flex flex-wrap gap-1.5">
+        <ul role="list" aria-label="Technologies" className="mt-6 flex flex-wrap gap-1.5">
           {project.tags.map((t) => (
             <li key={t} className="tag">
               {t}
@@ -207,7 +208,7 @@ export default async function ProjectPage({ params }: Props) {
                       {x.answer}
                     </p>
                     {x.sources && x.sources.length > 0 && (
-                      <ul aria-label="Sources cited" className="mt-3 flex flex-wrap gap-1.5">
+                      <ul role="list" aria-label="Sources cited" className="mt-3 flex flex-wrap gap-1.5">
                         {x.sources.map((s, i) => (
                           <li key={`${s}-${i}`} className="tag font-mono">
                             {s}
@@ -247,8 +248,13 @@ export default async function ProjectPage({ params }: Props) {
         <div className="section space-y-10">
           {study.figures.map((f) => (
             <figure key={f.src} className={f.wide ? "" : "mx-auto max-w-xl"}>
-              <div
-                className={`overflow-hidden rounded-[var(--r-lg)] border border-[var(--border)] ${
+              {/* The picture is a link to its full-size file, so the small
+                  print in it can be read on a phone. */}
+              <a
+                href={f.src}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`block cursor-zoom-in overflow-hidden rounded-[var(--r-lg)] border border-[var(--border)] ${
                   f.light ? "bg-white p-2 sm:p-4" : "bg-[var(--bg-soft)]"
                 }`}
               >
@@ -260,9 +266,11 @@ export default async function ProjectPage({ params }: Props) {
                   sizes={f.wide ? "(min-width: 1024px) 960px, 100vw" : "(min-width: 640px) 576px, 100vw"}
                   className="h-auto w-full"
                 />
-              </div>
+                <span className="sr-only"> Opens the full-size picture in a new tab.</span>
+              </a>
               <figcaption className="mt-3 text-sm leading-relaxed text-[var(--text-muted)]">
                 {f.caption}
+                {f.wide && <span className="sm:hidden"> Tap the picture to see it full size.</span>}
               </figcaption>
             </figure>
           ))}

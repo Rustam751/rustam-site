@@ -17,12 +17,16 @@ export default function EducationPage() {
       <div className="grid gap-5">
         {education.map((e) => (
           <div key={e.school} className="card p-6">
-            <div className="flex flex-col gap-1 md:flex-row md:items-start md:justify-between">
+            <div className="flex flex-col gap-1 md:flex-row md:items-start md:justify-between md:gap-6">
               <div>
                 <h2 className="card-title">{e.degree}</h2>
-                <p className="mt-0.5 text-sm text-[var(--text-muted)]">
-                  {e.school} <span className="text-[var(--text-faint)]">·</span>{" "}
-                  {e.location}
+                <p className="mt-1 text-sm text-[var(--text-muted)]">
+                  {e.school}
+                  {/* The place gets its own line on phones. */}
+                  <span className="text-[var(--text-faint)]">
+                    <span className="max-sm:hidden"> · </span>
+                    <span className="max-sm:block">{e.location}</span>
+                  </span>
                 </p>
               </div>
               <span className="meta shrink-0 md:pt-1.5">

@@ -14,14 +14,16 @@ export default function ProjectCard({ p }: { p: Project }) {
     <article
       className={[
         "card reveal relative grid gap-3.5 p-5 md:p-7",
+        // Two columns only from 1024px: below that the text column would
+        // be too narrow next to the result panel.
         hasAside &&
-          "md:grid-cols-[minmax(0,1fr)_18.5rem] md:grid-rows-[auto_auto_1fr] md:gap-x-10 md:gap-y-2.5",
+          "lg:grid-cols-[minmax(0,1fr)_18.5rem] lg:grid-rows-[auto_auto_1fr] lg:gap-x-10 lg:gap-y-2.5",
         href && "card-link",
       ]
         .filter(Boolean)
         .join(" ")}
     >
-      <header className="md:col-start-1 md:row-start-1">
+      <header className="lg:col-start-1 lg:row-start-1">
         <p className="meta">{p.period}</p>
         <h3 className="card-title mt-1.5">
           {href ? (
@@ -40,12 +42,12 @@ export default function ProjectCard({ p }: { p: Project }) {
       </header>
 
       {p.impact && (
-        <p className="proof md:col-start-2 md:row-span-2 md:row-start-1 md:self-start">{p.impact}</p>
+        <p className="proof lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start">{p.impact}</p>
       )}
 
-      <div className="md:col-start-1 md:row-span-2 md:row-start-2">
+      <div className="lg:col-start-1 lg:row-span-2 lg:row-start-2">
         <p className="max-w-[62ch] text-[0.9375rem] leading-[1.65] text-[var(--text-muted)]">{p.blurb}</p>
-        <ul aria-label="Technologies" className="tag-line mt-3.5">
+        <ul role="list" aria-label="Technologies" className="tag-line mt-3.5">
           {p.tags.map((t) => (
             <li key={t}>{t}</li>
           ))}
@@ -55,7 +57,7 @@ export default function ProjectCard({ p }: { p: Project }) {
       {hasLinks && (
         // The list itself lets clicks through to the stretched link; only
         // the real links inside it catch them.
-        <ul className="pointer-events-none relative z-10 flex flex-wrap items-center gap-x-4 gap-y-2 md:col-start-2 md:row-start-3 md:self-end">
+        <ul className="pointer-events-none relative z-10 flex flex-wrap items-center gap-x-4 gap-y-2 lg:col-start-2 lg:row-start-3 lg:self-end">
           {href && (
             // Visual cue only: the title link above is the real link.
             <li aria-hidden className="link-quiet text-[var(--accent-text)]">
@@ -68,6 +70,10 @@ export default function ProjectCard({ p }: { p: Project }) {
               <a href={l.href} target="_blank" rel="noopener noreferrer" className="link-quiet pointer-events-auto">
                 <LinkIcon label={l.label} />
                 {l.label}
+                {/* For screen readers: which project, and that a new tab opens. */}
+                <span className="sr-only">
+                  : {p.name} (opens in a new tab)
+                </span>
               </a>
             </li>
           ))}

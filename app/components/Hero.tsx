@@ -8,6 +8,10 @@ import { profile, stats } from "@/lib/data";
 // page before any JavaScript runs.
 const step = (i: number) => ({ "--i": i }) as CSSProperties;
 
+// The status line reads "what — where". On a narrow phone it breaks at the
+// dash, never in the middle of the place.
+const [statusWhat, statusWhere] = profile.status.split(" — ");
+
 const cv = profile.links.find((l) => l.label === "Resume (PDF)");
 const contactLinks = [
   { label: "Email", href: `mailto:${profile.email}` },
@@ -22,14 +26,22 @@ export default function Hero() {
         <div className="min-w-0">
           <p className="status rise" style={step(0)}>
             <span className="status-dot" aria-hidden />
-            <span>{profile.status}</span>
+            <span>
+              {statusWhat}
+              {statusWhere && (
+                <>
+                  {" — "}
+                  <span className="whitespace-nowrap">{statusWhere}</span>
+                </>
+              )}
+            </span>
           </p>
 
-          <p className="rise mt-6 text-[0.9375rem] font-medium text-[var(--text)]" style={step(1)}>
+          <p className="rise mt-6 text-balance text-[0.9375rem] font-medium text-[var(--text)]" style={step(1)}>
             {profile.title}
           </p>
           <h1 className="h-hero rise mt-2.5" style={step(1)}>
-            Hi, I&apos;m {profile.firstName}.
+            Hi, I&apos;m {profile.firstName}.{" "}
             <span className="gradient-text block">{profile.tagline}.</span>
           </h1>
 
@@ -58,7 +70,9 @@ export default function Hero() {
                     href={l.href}
                     target={l.href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    className="link-muted"
+                    // The padding makes the link easier to tap; the
+                    // negative margin keeps the row where it was.
+                    className="link-muted -my-2.5 inline-block py-2.5"
                   >
                     {l.label}
                   </a>

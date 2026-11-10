@@ -38,7 +38,8 @@ export const metadata: Metadata = {
     title: "Rustam Mukhtarov — ML/AI Engineer",
     description:
       "I build deployable AI systems: RAG pipelines, ML APIs, computer vision, and medical imaging. Projects, experience, and how to reach me.",
-    url: siteUrl,
+    // No "url" here: every page would inherit it and claim to be the home
+    // page. Without it, a link preview uses the address that was shared.
     siteName: "Rustam Mukhtarov",
     type: "website",
     locale: "en_US",
@@ -80,13 +81,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} dark`}>
       <body className="min-h-screen flex flex-col antialiased">
+        {/* First stop for the Tab key; hidden until it has focus. */}
+        <a href="#content" className="skip-link">
+          Skip to content
+        </a>
         <Header />
-        <main className="flex-1 w-full mx-auto max-w-5xl px-5 sm:px-6 lg:px-8">
+        <main id="content" className="flex-1 w-full mx-auto max-w-5xl px-5 sm:px-6 lg:px-8">
           {children}
           {/* The same contact block closes every page. */}
-          <section className="section">
+          <div className="section">
             <ContactCTA />
-          </section>
+          </div>
         </main>
         <Footer />
         <JsonLd data={personJsonLd} />

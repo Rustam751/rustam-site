@@ -380,7 +380,7 @@ export const caseStudies: Record<string, CaseStudy> = {
         title: "Limits",
         bullets: [
           "This is a design project. Prototype functionality is not real: nothing is saved, booked or paid for.",
-          "The landing and features pages describe the intended product, including in-app payment and host payouts. None of that is implemented, and the listings on the landing page are placeholder text.",
+          "The landing and features pages describe the intended product, including in-app payment and host payouts. The website itself takes no payments. Its listings are placeholder text and the request-demo form does not submit anywhere.",
           "The feature images are generated concept images, not screenshots of an app.",
           "Usability testing was small and qualitative. The documented think-aloud round had three participants.",
           "The heuristic review was done by the team itself, not by outside evaluators.",

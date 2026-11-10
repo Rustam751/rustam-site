@@ -42,7 +42,6 @@
   --warn-border: rgba(252, 211, 77, 0.3);
 
   /* shape (named --r-* so they do not clash with Tailwind's own --radius-*) */
-  --r-sm: 0.5rem;
   --r-btn: 0.625rem;
   --r-md: 0.75rem;
   --r-lg: 1rem;
@@ -70,10 +69,10 @@
    Base
 ----------------------------------------------------------------- */
 @layer base {
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
+  /* Leaves room for the sticky header when the page scrolls to a link
+     target or to the element that has keyboard focus. */
+  html {
+    scroll-padding-top: 5rem;
   }
 
   h1,
@@ -206,32 +205,36 @@ body::before {
     border-radius: var(--r-lg);
   }
   /* Only for cards that are links */
-  .card-link,
-  .card-hover {
+  .card-link {
     transition:
       border-color var(--dur-2) var(--ease-smooth),
       background-color var(--dur-2) var(--ease-smooth),
       transform var(--dur-2) var(--ease-smooth),
       box-shadow var(--dur-2) var(--ease-smooth);
   }
-  .card-link:hover,
-  .card-hover:hover {
+  .card-link:hover {
     border-color: var(--border-strong);
     background: var(--surface-2);
     transform: translateY(-2px);
     box-shadow: var(--shadow-card);
   }
-  /* The title link covers the whole card */
+  /* The title link covers the whole card. z-index 1 keeps it above the
+     result panel; the GitHub and Docs links sit higher still (z-10). */
   .stretched::after {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 1;
     border-radius: var(--r-lg);
   }
-  .stretched:focus-visible { outline: none; }
-  .card:has(.stretched:focus-visible) {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
+  /* The focus ring goes around the whole card where the browser can draw
+     it there; older browsers keep the normal ring on the title link. */
+  @supports selector(:has(*)) {
+    .stretched:focus-visible { outline: none; }
+    .card:has(.stretched:focus-visible) {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
   }
   .card-arrow {
     display: inline-block;
@@ -293,19 +296,30 @@ body::before {
     color: var(--text-muted);
     white-space: nowrap;
   }
+  /* Items separated by a dot. The dot is drawn in front of each item and
+     the left edge is clipped, so a line never starts or ends with a dot
+     when the list wraps. */
   .tag-line {
     display: flex;
     flex-wrap: wrap;
-    column-gap: 0.5rem;
     row-gap: 0.125rem;
+    margin-left: -1.125rem;
+    clip-path: inset(-0.5rem -0.5rem -0.5rem 1.125rem);
     font-size: 0.8125rem;
     line-height: 1.5;
     color: var(--text-faint);
   }
-  .tag-line > li:not(:last-child)::after {
+  .tag-line > li {
+    position: relative;
+    padding-left: 1.125rem;
+  }
+  .tag-line > li::before {
     content: "·";
     content: "·" / "";
-    margin-left: 0.5rem;
+    position: absolute;
+    left: 0;
+    width: 1.125rem;
+    text-align: center;
   }
   .badge-warn {
     display: inline-flex;
@@ -333,6 +347,16 @@ body::before {
     color: var(--text);
     background: var(--accent-tint);
     border-color: var(--accent);
+  }
+  /* Windows contrast themes drop the tint, so mark the pressed chip with
+     the system highlight colours instead. */
+  @media (forced-colors: active) {
+    .chip[aria-pressed="true"] {
+      forced-color-adjust: none;
+      background: Highlight;
+      color: HighlightText;
+      border-color: Highlight;
+    }
   }
 
   /* buttons */
@@ -386,6 +410,22 @@ body::before {
     text-decoration-color: color-mix(in srgb, var(--accent-text) 45%, transparent);
   }
   .link:hover { text-decoration-color: currentColor; }
+  /* "Skip to content" for keyboard users: off screen until it has focus. */
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 0.75rem;
+    z-index: 60;
+    translate: 0 -300%;
+    border-radius: var(--r-btn);
+    border: 1px solid var(--border-strong);
+    background: var(--surface-2);
+    padding: 0.5rem 0.875rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .skip-link:focus { translate: 0 0; }
 
   /* status line in the hero: plain line on phones, pill from 640px */
   .status {
@@ -537,7 +577,7 @@ body::before {
   }
 }
 
-/* Visitors who ask for less motion get no smooth scrolling, pulsing or lifts. */
+/* Visitors who ask for less motion get no entrances, pulsing or lifts. */
 @media (prefers-reduced-motion: reduce) {
   .rise,
   .reveal,
@@ -545,7 +585,6 @@ body::before {
     animation: none !important;
   }
   .card-link:hover,
-  .card-hover:hover,
   .btn:hover .arrow,
   .card-link:hover .card-arrow {
     transform: none;
@@ -556,5 +595,47 @@ body::before {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ----------------------------------------------------------------
+   Paper. Printing and "Save as PDF" leave backgrounds out, so the page
+   switches to dark text on white. Entrances are off: a row that was
+   never scrolled into view would otherwise print blank.
+----------------------------------------------------------------- */
+@media print {
+  :root {
+    color-scheme: light;
+    --bg: #fff;
+    --bg-soft: #fff;
+    --surface: #fff;
+    --surface-2: #fff;
+    --border: #d4d4d8;
+    --border-strong: #a1a1aa;
+    --text: #111114;
+    --text-muted: #3f3f46;
+    --text-faint: #52525b;
+    --accent-text: #3730a3;
+    --accent-2-text: #0e7490;
+    --accent-tint: transparent;
+    --accent-2-tint: transparent;
+    --glow-a: transparent;
+    --glow-b: transparent;
+    --warn: #92400e;
+    --warn-tint: transparent;
+    --warn-border: #d97706;
+    --shadow-card: none;
+  }
+  .rise,
+  .reveal,
+  .status-dot::after {
+    animation: none !important;
+  }
+  .gradient-text {
+    background: none;
+    color: var(--text);
+  }
+  .skip-link {
+    display: none;
   }
 }
