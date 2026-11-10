@@ -174,7 +174,7 @@ export const projects: Project[] = [
       "Evaluation harness over a 70-page report: 0.87 retrieval hit rate, 100% abstention accuracy, ~4s mean latency.",
       "29 offline tests with injected fake LLM/embedding clients; CI on every push; one-command Docker Compose deploy.",
     ],
-    tags: ["RAG", "FastAPI", "ChromaDB", "Claude API", "Docker", "CI", "Evaluation"],
+    tags: ["RAG", "FastAPI", "ChromaDB", "Claude API", "Docker", "CI", "Evaluation", "LLM"],
     links: [
       { label: "GitHub", href: "https://github.com/Rustam751/rag-document-assistant" },
       { label: "Docs", href: "https://rag.mukhtarov.dev" },
