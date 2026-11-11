@@ -77,11 +77,14 @@ const personJsonLd = {
   sameAs: ["https://www.linkedin.com/in/russmukhtar", "https://github.com/Rustam751"],
 };
 
-// Runs before the page is painted. A visitor who picked the light theme
-// (the switch in the header saves "light" under the key "theme") gets it
-// straight away, with no dark flash. Everyone else gets dark, the default.
+// Runs before the page is painted, so the right theme is there from the
+// first frame, with no flash. The rule:
+// 1. A visitor who used the switch in the header gets what they chose
+//    (saved in the browser as "light" or "dark" under the key "theme").
+// 2. Everyone else gets the theme their device is set to.
+// Without JavaScript the page stays dark.
 // The other half of this is app/components/ThemeToggle.tsx.
-const themeScript = `try{if(localStorage.getItem("theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}`;
+const themeScript = `(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t==="light"||(t!=="dark"&&window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches))document.documentElement.setAttribute("data-theme","light")})()`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

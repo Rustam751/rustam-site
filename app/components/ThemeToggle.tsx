@@ -9,7 +9,8 @@ import { useSyncExternalStore } from "react";
 // - The choice is saved in the browser under the key "theme". A small
 //   script in app/layout.tsx reads it before the page is painted, so a
 //   visitor who chose light never sees a dark flash.
-// - Dark is the default for everyone who has not chosen.
+// - A visitor who has not chosen gets the theme their device is set to.
+//   That same script decides it when the page loads.
 
 type Theme = "dark" | "light";
 

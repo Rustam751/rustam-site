@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ----------------------------------------------------------------
-   Design tokens. Dark is the default; the light theme further down is
+   Design tokens. Dark is the base; the light theme further down is
    the same list with other values. Components read only these
    variables, never a colour of their own.
 ----------------------------------------------------------------- */
@@ -60,8 +60,10 @@
   --dur-3: 520ms;
 }
 
-/* Light theme. The switch in the header (ThemeToggle) sets
-   data-theme="light" on <html> and the browser remembers the choice.
+/* Light theme, active while <html> has data-theme="light". The script in
+   app/layout.tsx sets that when the visitor's device is in light mode;
+   the switch in the header (ThemeToggle) sets or removes it by hand, and
+   the browser remembers that choice.
    Every text colour here keeps a contrast of 4.5:1 or better on every
    surface it is used on; when a value changes, check that again. */
 :root[data-theme="light"] {
