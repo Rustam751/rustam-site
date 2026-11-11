@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { href: "/", label: "Home" },
@@ -90,6 +91,9 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
+            {/* Light / dark switch, on every screen size */}
+            <ThemeToggle />
+
             {/* A plain link, not <Link>: the CV is a file, not a page. */}
             <a
               href="/resume/Russ_Mukhtar_CV.pdf"

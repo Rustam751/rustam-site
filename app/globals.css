@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 /* ----------------------------------------------------------------
-   Design tokens. Dark is the default. Components read only these
-   variables, so a light theme later is one more block of values.
+   Design tokens. Dark is the default; the light theme further down is
+   the same list with other values. Components read only these
+   variables, never a colour of their own.
 ----------------------------------------------------------------- */
 :root {
   color-scheme: dark;
@@ -57,6 +58,64 @@
   --dur-1: 150ms;
   --dur-2: 220ms;
   --dur-3: 520ms;
+}
+
+/* Light theme. The switch in the header (ThemeToggle) sets
+   data-theme="light" on <html> and the browser remembers the choice.
+   Every text colour here keeps a contrast of 4.5:1 or better on every
+   surface it is used on; when a value changes, check that again. */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  /* surfaces */
+  --bg: #f7f7fa;
+  --bg-soft: #f0f0f5;
+  --surface: #ffffff;
+  --surface-2: #f1f1f6;
+  --border: rgba(17, 17, 34, 0.1);
+  --border-strong: rgba(17, 17, 34, 0.22);
+
+  /* text */
+  --text: #14141a;
+  --text-muted: #4a4a57;
+  --text-faint: #60606c;
+
+  /* brand: deeper than in the dark theme, so buttons carry white text */
+  --accent: #4f46e5;
+  --accent-2: #0e7490;
+  --accent-text: #4338ca;
+  --accent-2-text: #0e7490;
+  --on-accent: #ffffff;
+  --accent-tint: rgba(79, 70, 229, 0.1);
+  --accent-2-tint: rgba(14, 116, 144, 0.08);
+  --accent-glow: rgba(79, 70, 229, 0.28);
+  --glow-a: rgba(99, 102, 241, 0.09);
+  --glow-b: rgba(6, 182, 212, 0.06);
+
+  /* status */
+  --ok: #059669;
+  --warn: #92400e;
+  --warn-tint: rgba(217, 119, 6, 0.1);
+  --warn-border: rgba(180, 83, 9, 0.35);
+
+  --shadow-card: 0 16px 40px -20px rgba(20, 20, 50, 0.22);
+}
+
+/* The theme switch shows a sun while the page is dark and a moon while
+   it is light. Plain CSS, so the right icon is there on first paint. */
+.theme-icon-moon,
+:root[data-theme="light"] .theme-icon-sun {
+  display: none;
+}
+:root[data-theme="light"] .theme-icon-moon {
+  display: block;
+}
+
+/* While the theme changes, nothing fades: the whole page switches at once. */
+:root[data-theme-switching] *,
+:root[data-theme-switching] *::before,
+:root[data-theme-switching] *::after {
+  transition: none !important;
 }
 
 @theme inline {
@@ -604,7 +663,8 @@ body::before {
    never scrolled into view would otherwise print blank.
 ----------------------------------------------------------------- */
 @media print {
-  :root {
+  :root,
+  :root[data-theme="light"] {
     color-scheme: light;
     --bg: #fff;
     --bg-soft: #fff;

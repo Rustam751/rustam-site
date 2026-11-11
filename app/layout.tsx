@@ -77,9 +77,20 @@ const personJsonLd = {
   sameAs: ["https://www.linkedin.com/in/russmukhtar", "https://github.com/Rustam751"],
 };
 
+// Runs before the page is painted. A visitor who picked the light theme
+// (the switch in the header saves "light" under the key "theme") gets it
+// straight away, with no dark flash. Everyone else gets dark, the default.
+// The other half of this is app/components/ThemeToggle.tsx.
+const themeScript = `try{if(localStorage.getItem("theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} dark`}>
+    // suppressHydrationWarning: the script above may add data-theme to
+    // <html> before React starts, and React should not complain about it.
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-screen flex flex-col antialiased">
         {/* First stop for the Tab key; hidden until it has focus. */}
         <a href="#content" className="skip-link">
