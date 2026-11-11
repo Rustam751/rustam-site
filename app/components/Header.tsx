@@ -63,7 +63,9 @@ export default function Header() {
             <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-[var(--accent)] to-[var(--accent-2)] text-sm font-bold text-[var(--on-accent)]">
               RM
             </span>
-            <span className="hidden sm:inline text-sm text-[var(--text-muted)]">
+            {/* Hidden on phones, and again from 768 to 1023px where the
+                menu, the theme switch and the CV button need the room. */}
+            <span className="hidden text-sm text-[var(--text-muted)] sm:inline md:hidden lg:inline">
               Rustam Mukhtarov
             </span>
           </Link>
@@ -99,7 +101,7 @@ export default function Header() {
               href="/resume/Russ_Mukhtar_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:inline-flex btn btn-sm"
+              className="hidden whitespace-nowrap md:inline-flex btn btn-sm"
             >
               Download CV
             </a>

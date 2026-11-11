@@ -71,7 +71,6 @@ export default function ThemeToggle() {
       type="button"
       onClick={() => chooseTheme(next)}
       aria-label={label}
-      title={label}
       className="grid h-9 w-9 place-items-center rounded-lg border border-[var(--border)] text-[var(--text-muted)] transition-colors hover:border-[var(--border-strong)] hover:text-[var(--text)]"
     >
       <svg className="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
